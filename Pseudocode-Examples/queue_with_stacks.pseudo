@@ -1,0 +1,33 @@
+Stack S1
+Stack S2
+
+
+Algorithm enqueue(e) // Laufzeit O(n) im worst-case. Im best-case O(1) (wenn alles bereits im Stack2 ist.)
+  reStack(S1, S2)
+  S2.push(e)
+
+Algorithm dequeue() // Gleiche Laufzeit wie enqueue()
+  reStack(S2,S1)
+  return S1.pop()
+   // Exceptionhandling ist nicht zwingend notwendig, wenn der Stack bereits
+   // ein Exceptionhandling bei leeren Stacks implementiert hat.
+   // Das Abfangen der Exception ist Sache des Aufrufers.
+
+Algorithm reStack(from, to)
+  while ¬from.isEmpty() then
+    to.push(from.pop())
+
+Algorithm size() // Laufzeit O(1)
+  return S1.size() + S2.size() // Einer der beiden Stacks wird leer sein, so braucht es keine Fallunterscheidung
+
+Algorithm isEmpty() // Laufzeit O(1)
+  return size() = 0
+  ODER:
+    return S1.isEmpty() AND S2.isEmpty()
+
+Algorithm front() // Gleiche Laufzeit wie enqueue()
+  reStack(S2,S1)
+  return S1.top()
+
+
+  

@@ -1,0 +1,23 @@
+Algorithm GrowableArray()
+  int N // The size of the Array
+  Q[]   // The queue Array
+  int n // The number of elements in the queue
+  int f // The index of the front element
+
+  Algorithm enqueue(e)
+    if n = N then
+      growArray() // resizes the Array
+    Q[f+n mod N] <- e
+    n <- n + 1
+
+  Algorithm growArray()
+    Array Q_New[N * 2]
+
+    for i <- f to i < N do
+      Q_New[i-f] <- Q[i]
+
+    for i <- 0 to i < n+f mod N do
+      Q_New[i+f] <- Q[i]
+
+    f <- 0
+    N <- N * 2

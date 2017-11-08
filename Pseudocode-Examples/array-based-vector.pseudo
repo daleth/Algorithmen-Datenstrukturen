@@ -1,0 +1,20 @@
+Algorithm insertAtRank(r,e)
+if (r>N && r<0)
+	throw OutOfBoundException
+if (r<n)
+	for (i=n; i>r; i--)
+		V[i+1]=V[i]
+V[r] = e
+n++
+
+
+
+Algorithm removeAtRank(r)
+if (r>N && r<0 && r>n)
+	throw OutOfBoundException
+else if (r=n)
+	n--;
+else if (r<n)
+	for (i=r; i<n; i++)
+		V[i] = V[i + 1]
+n--
