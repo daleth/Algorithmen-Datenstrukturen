@@ -1,0 +1,33 @@
+Algorithm insertAtRank(r,e)
+	if (r<0 OR r>n) // Wichtig r>n und nicht r>=n, da der grösste Index, an dem eingefügt werden kann r=n ist.
+		throw InvalidRankException
+	if n=N then
+		throw FullVectorException
+	if (r<n)
+		for i<-n downto r + 1 do // Java: (i<-n; i>r; i<-i-1)
+			V[i+1]=V[i]
+	V[r] <- e
+	n<-n+1
+
+Algorithm removeAtRank(r)
+	if r<0 OR r>=n then // Wichtig: r>=n und nicht r<n
+		throw InvalidRankException
+	else
+		temp<-V[r]
+		for (i<-r to n-1 do )
+			V[i] = V[i + 1]
+		n<-n-1
+		return temp
+
+## Mögliche Optimierung: Je nach dem, an welchem Ende der Rang näher ist. Ähnlich circular Array.
+
+
+Rekursive Lösung:
+Algorithm insertAtRank(r,e)
+	if r=n then
+		V[r] <- e
+		n <- n + 1
+	else
+		temp <- V[r]
+		V[r] <- e
+		insertAtRank(r + 1,temp)

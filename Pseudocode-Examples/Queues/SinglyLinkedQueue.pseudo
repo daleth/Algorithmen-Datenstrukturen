@@ -1,0 +1,26 @@
+Algorithm enqueue(e)
+  new <- new Node(e)
+    if n = 0 then
+      front <- new
+    else
+      rear.next <- new
+    rear <- new
+    n <- n + 1
+
+Algorithm dequeue()
+  if n = n then
+    throw EmptyQueueException
+  temp <- front.element
+  front <- front.next
+  n <- n - 1
+  (if isEmpty() then rear <- null) // Wenn die Prüfung nicht stattfindet, wird beim nächsten enqueue() der Zustand wieder behoben. Abwägen Size over Performance
+  return temp
+
+
+Algorithm front()
+  if n = 0 then
+    throw EmptyQueueException
+  else
+    return front.element
+
+// DRY ->   if n = 0 then throw EmptyQueueException // Kann in eine private Hilfsmethode ausgelagert werden.

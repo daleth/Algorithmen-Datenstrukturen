@@ -1,0 +1,62 @@
+Algorithm TreeSize(T)
+
+Algorithm size() // O(n)
+If exists(root()) then
+  SizeOf(root())
+
+Algorithm sizeOf(p)
+  n <- 1
+  foreach c in children(p) do // Abbruchbedingung ist bereits enthalten, da wenn keine Children, dann eine leere Liste...
+    n <- n + sizeOf(c)
+  return n
+
+
+Algorithm getTreeSizeIterative(T)
+  p <- T.root()
+  n <- 0
+  listOfPositions <- T.elements()
+  foreach position in listOfPositions do
+    n <- n + 1
+  return n
+
+  Algorithm getInternalNodeCount()
+    return getInternalNodeCountOf(root())
+
+    getInternalNodeCountOf(p)
+      if isExternal(p) then
+        return 0
+      internalNodeCount <- 0
+      else
+        internalNodeCount <- internalNodeCount + 1
+        nodeList <- children(p)
+        foreach p in children do
+          internalNodeCount <- internalNodeCount + getInternalNodeCountOf(p)
+        return internalNodeCount
+
+
+// Ab hier vom Unterricht
+
+
+  Algorithm getInternalNodeCount() // O(n)
+    return getInternalNodeCountOf(root())
+
+    getInternalNodeCountOf(p)
+      if isExternal(p) then
+        return 0
+      else
+        externalNodeCount <- 1
+        foreach child in children(p)
+          return externalNodeCount <- externalNodeCount + getInternalNodeCountOf(child)
+
+
+
+  Algorithm getExternalNodeCount() // O(n)
+    return getExternalNodeCountOf(root())
+
+    getExternalNodeCountOf(p)
+      if isExternal(p) then
+        return 1
+      else
+        externalNodeCount <- 0
+        foreach child in children(p)
+          return externalNodeCount <- externalNodeCount + getExternalNodeCountOf(child)

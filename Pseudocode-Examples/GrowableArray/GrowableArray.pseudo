@@ -11,13 +11,20 @@ Algorithm GrowableArray()
     n <- n + 1
 
   Algorithm growArray()
-    Array Q_New[N * 2]
+    for i<-0 to n-1 do
+      Q`[i] <- Q[f + i mod N]
+
+    Q <- Q`
+    N <- N`
+
+  Algorithm growArray()
+    Array Q`[N`]
 
     for i <- f to i < N do
-      Q_New[i-f] <- Q[i]
+      Q`[i-f] <- Q[i]
 
     for i <- 0 to i < n+f mod N do
-      Q_New[i+f] <- Q[i]
+      Q`[i+f] <- Q[i]
 
     f <- 0
-    N <- N * 2
+    N <- N`

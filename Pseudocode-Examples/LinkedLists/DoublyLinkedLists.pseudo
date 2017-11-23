@@ -1,0 +1,40 @@
+Algorithm insertAfter(p,e)
+  if ¬isValid(p) then
+    throw InvalidPositionException
+
+  new <- new Node(e)
+  new.prev <- p
+  p.next <- new
+  if ¬(p = last) then
+    new.next <- p.next
+    new.next.prev <- new
+  else
+    last <- new
+  n <- n + 1
+
+Algorithm insertFirst(e)
+  new <- new Node(e)
+
+  if n > 0 then
+    new.next <- first
+    first.prev <- new
+  else
+    last <- new
+  fist <- new
+  n <- n + 1
+
+Algorithm removeElement(p)
+  if ¬isValid then
+    throw InvalidPositionException
+
+  if p = last then
+    last <- last.prev
+  if else p = first then
+    first <- first.next
+  else
+    p.next.prev <- p.prev
+    p.prev.next <- p.next
+  // p ungültig machen
+  n <- n -1
+
+  return p.element
