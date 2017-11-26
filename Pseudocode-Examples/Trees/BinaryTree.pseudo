@@ -1,0 +1,54 @@
+Algorithm hasLeft(p)
+  if ¬p.left = null then
+    return true
+  else
+    return false
+
+Algorithm isExternal(p)
+  if ¬p.left = null AND ¬p.right = null then
+    retun true
+  else
+    return false
+
+Algorithm parent(p)
+  if p.parent = null then
+    throw NoParentException
+  else
+    return p.parent
+
+Algorithm leftChild(p)
+  if hasLeft(p) then
+    return p.left
+  else
+    return null
+
+Algorithm addRoot(e)
+  new <- new Node(e)
+  new.left <- root
+  root.parent <- new
+  root <- new
+
+Algorithm insertLeft(p,e)
+  new <- new Node(e)
+  new.parent <- p
+  if hasLeft(p) then
+    new.left <- p.left
+    p.left.parent <- new
+  p.left <- new
+
+Algorithm insertChildren(p,e1,e2)
+  // e1 is leftChild
+  // e2 is rightChild
+  newLeft <- new Node(e1)
+  newLeft.parent <- p
+  if hasLeft(p) then
+    newLeft.left <- p.left
+    p.left.parent <- newLeft
+  p.left <- newLeft
+
+  newRight <- new Node(e2)
+  newRight.parent <- p
+  if hasRight(p) then
+    newRight.right <- p.right
+    p.right.parent <- newRight
+  p.right <- newRight
