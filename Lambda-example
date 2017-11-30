@@ -1,0 +1,7 @@
+StringBuffer sb = new StringBuffer();
+list.forEach(e -> sb.append(e.toString()+", "));
+
+list.forEach(e -> {
+  sb.append(e.toString()+", ");
+}
+);

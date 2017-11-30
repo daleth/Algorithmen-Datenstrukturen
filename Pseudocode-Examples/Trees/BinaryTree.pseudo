@@ -1,32 +1,51 @@
 Algorithm hasLeft(p)
-  if ¬p.left = null then
-    return true
-  else
-    return false
+  if ¬valid(p) then
+    ThrowInvalidNodeException
+  return p.left != null
+//  if ¬p.left = null then
+//    return true
+//  else
+//    return false
 
 Algorithm isExternal(p)
-  if ¬p.left = null AND ¬p.right = null then
-    retun true
-  else
-    return false
+// ggf. validieren oder mit hasLeft aufrufen
+  return ¬(hasLeft(p) OR hasRight(p))
+  ODER
+  return p.left = null AND p.right = null
+
 
 Algorithm parent(p)
+  isValid(p)
   if p.parent = null then
     throw NoParentException
-  else
-    return p.parent
+  return p.parent
 
 Algorithm leftChild(p)
-  if hasLeft(p) then
+
+  if not hasLeft(p) then
+    throw NoLeftChildException
     return p.left
-  else
-    return null
+
 
 Algorithm addRoot(e)
   new <- new Node(e)
-  new.left <- root
-  root.parent <- new
+  if n != 0 then
+    new.left <- root // Man muss sich entscheiden, ob links oder rechts...
+    root.parent <- new
   root <- new
+  n <- n + 1
+  //ggf Tiefe aktualisieren
+
+Algorithm insertLeft(p,e)
+  if hasLeft(p) then
+    throw ....
+  new <- new Node(e)
+  new.parent <- p
+  p.left <- new
+  n <- n + 1
+  depth <- depth(p) + 1
+
+
 
 Algorithm insertLeft(p,e)
   new <- new Node(e)
@@ -39,6 +58,17 @@ Algorithm insertLeft(p,e)
 Algorithm insertChildren(p,e1,e2)
   // e1 is leftChild
   // e2 is rightChild
+  if not isExternal(p) then
+    Throw Exception
+
+  insertLeft(p, e1)
+  insertRight(p,e2)
+  n <- n + 2
+  depth <- depth(p) + 1
+
+
+
+
   newLeft <- new Node(e1)
   newLeft.parent <- p
   if hasLeft(p) then
