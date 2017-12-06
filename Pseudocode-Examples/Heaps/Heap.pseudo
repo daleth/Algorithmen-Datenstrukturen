@@ -1,20 +1,64 @@
 Algorithm Heap()
   H <- H[]
+  n <- 0
   lastNode <- 0
+  C.isLessThan(e1,e2)
+
+
 Algorithm insertElement(e)
-  lastNode <- lastNode + 1
-  H[lastNode] <- e
-  upheap(lastNode)
+if ¬C.isComparable(e) then throw NotComparableException // e muss vergleichbar sein, denke an null!
+n <- n + 1
+  if n = N then
+    H <- doubleSize(H) // Weil die Daten erst bei Index 1 beginnen.
+    N <- H.lenght
+  H[n] <- e
+  upheap(n)
 
 
 Algorithm removeMin()
-  H <- H[]
-  H[0] <- H[1]
-  H[1] <- H[lastNode]
-  H[lastNode] <- null
+  if n=0
+    throw EmptyHeapException
+  min <- H[1]
+  H[1] <- H[n]
+  n <- n - 1
+  downheap(1)
+  return H[1]
 
-  downheap(H[1])
-  return H[0]
 
-Algorithm upheap(p)
-  while
+Algorithm upheap(i)
+  if i>1 then
+    j <- i div 2 // Ganzzahlige Division
+    if C.isLessThan(H[i], H[j]) then
+      swap(i,j)
+      upheap(j)
+
+
+Algorithm downheap(i)
+  l <- i * 2
+  r <- l + 1
+  if l <= n then  // left child exists
+    if r <= n // left and right children exist
+      if C.isLessThan(H[l], H[r]) then
+        j <- l
+      else
+        j <- r // oder j <- l am anfang initialisieren und dann bei Bedarf, also hier ändern.
+    else j <- l
+    if C.isLessThan(H[j], H[i]) then
+      swap(i,j)
+      downheap(j)
+
+Algorithm downheap(i) // Alternative
+  j <- 2 * i
+  if j <= n then
+    if j < n 
+      if C.isLessThan(H[j + 1], H[j]) then
+        j <- j + 1
+    if C.isLessThan(H[j], H[i]) then
+      swap(i,j)
+      downheap(j)
+
+
+Algorithm swap(i,j)
+  H[0] <- H[i]
+  H[i] <- H[j]
+  H[j] <- H[0]
