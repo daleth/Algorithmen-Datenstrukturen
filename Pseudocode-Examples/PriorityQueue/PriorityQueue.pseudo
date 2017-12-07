@@ -1,0 +1,10 @@
+Algorithm PriorityQueue()
+c <- 0 // Zähler, der die Priority hochzählt. Jedes neue Element erhält eine tiefere Nummer...
+
+
+Algorithm enqueue(e)
+  c <- c + 1
+  PQ.insertItem(c,e)
+
+Algorithm dequeue()
+  return PQ.removeMin()
