@@ -1,0 +1,8 @@
+Algorithm insertKey(k)
+
+  found <- treeSearch(k, root())
+  while isInternal(found) then
+    found <- treeSearch(k, leftChild(found))
+  makeNewLeaf(k, found)
+  n <- n + 1
+    

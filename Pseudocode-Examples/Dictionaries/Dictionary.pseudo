@@ -1,0 +1,50 @@
+N, n, H[], h/k € {0,...,N-1}
+beta
+
+Algorithm insertElement(k,e)
+  if n/N > beta then
+    rehash()
+
+  z <- h(k)
+  while H[z] ¬ {NULL, AVAIL} do
+    z <- (z + 1) mod N
+  H[z] <- mew Item(k,e)
+
+Algorithm rehash()
+  N' <- 2N
+  H' <- newArray(N')
+  h'<- new hashFunction(N')
+  for i <- 0 to N-1 do
+    item <- H[i]
+    if item € {NULL, AVAIL} then
+    z <- h(item.key)
+    while H[z] ¬ {NULL} do
+      z <- (z + 1) mod N
+    H'[z] <- item
+
+    H <- H'
+    h <- h'
+    N' <- N
+'
+Algorithm removeElement(k)
+  z <- h(k)
+  while H[z] ¬ NULL do
+    if H[z] ¬ AVAIL
+      item <- H[z]
+      if item.key = k then
+        H[z] <- AVAIL
+        n <- n - 1
+        return item.element // k found
+    z <- (z + 1) mod N
+  return NO_SUCH_KEY
+
+
+  Algorithm findElement(k)
+    z <- h(k)
+    while H[z] ¬ NULL do
+      if H[z] ¬ AVAIL
+        item <- H[z]
+        if item.key = k then
+          return item.element // k found
+      z <- (z + 1) mod N
+    return NO_SUCH_KEY

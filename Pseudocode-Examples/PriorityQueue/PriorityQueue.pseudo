@@ -1,6 +1,6 @@
 Algorithm PriorityQueue()
-c <- 0 // Zähler, der die Priority hochzählt. Jedes neue Element erhält eine tiefere Nummer...
-
+c <- 0 // Zähler, der die Priority hochzählt. Jedes neue Element erhält eine höhere Nummer...
+PQ <- new Heap()
 
 Algorithm enqueue(e)
   c <- c + 1
